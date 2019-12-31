@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require('fs');
 var profiles = require('./profiles.json');
-const port = 3000;
+//const port = 3000;
 
 app.get('/', (req, res) => res.send('<p>Nothing to see there</p><p>P.S maybe you should use 127.0.0.1/click</p>'));
 app.get('/click', (req, res) => {
@@ -70,4 +70,4 @@ app.get('/api/addtobal/:request', (req,res)=>{
 		});
 	res.send(`{"error_id":"null", "desc":"all is OK"}`);
 });
-app.listen(port);
+app.listen(process.env.PORT);
