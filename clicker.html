@@ -1,0 +1,33 @@
+<html>
+
+
+<head>
+<title>Welcome!</title>
+</head>
+
+<body>
+<h1><b>Welcome to clicker</b></h1>
+For who do you want to click?
+<input type="text" name="user"></input>
+<script type="text/javascript">
+function httpGet(theUrl)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
+function doRequest()
+{
+	var user = document.getElementsByName("user")[0].value;
+	var json = JSON.parse(httpGet("/api/clickfor/"+user));
+	if(json.error_id==1){alert('User is not found :{');}
+}
+
+</script>
+<input type="button" value="Click!" onclick="doRequest()">
+</body>
+
+
+</html>
